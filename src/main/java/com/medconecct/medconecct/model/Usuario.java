@@ -81,4 +81,8 @@ public abstract class Usuario implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+    public String getRole() {
+        return "ROLE_" + this.getTipo().name(); // Converte o enum para string: ROLE_MEDICO ou ROLE_PACIENTE
+    }
+    
 }
