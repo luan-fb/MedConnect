@@ -7,48 +7,30 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body class="min-h-screen gradient-bg flex items-center justify-center">
     <div class="w-full max-w-lg bg-white rounded-xl card-shadow p-8">
       <h2 class="text-2xl font-bold mb-6 text-center text-green-500">
         Cadastro de Médico
       </h2>
-      <form class="space-y-4">
-        <input
-          type="text"
-          placeholder="Nome completo"
-          required
-          class="input-field"
-        />
-        <input type="text" placeholder="CRM" required class="input-field" />
-        <input
-          type="text"
-          placeholder="Especialidade"
-          required
-          class="input-field"
-        />
-        <input type="email" placeholder="E-mail" required class="input-field" />
-        <input
-          type="password"
-          placeholder="Senha"
-          required
-          class="input-field"
-        />
-        <input
-          type="password"
-          placeholder="Confirmar senha"
-          required
-          class="input-field"
-        />
+
+      <form id="cadastro-medico-form" class="space-y-4">
+        <input type="text" id="nome" name="nome" placeholder="Nome completo" required class="input-field" />
+        <input type="text" id="crm" name="crm" placeholder="CRM" required class="input-field" />
+        <input type="text" id="especialidade" name="especialidade" placeholder="Especialidade" required class="input-field" />
+        <input type="email" id="email" name="email" placeholder="E-mail" required class="input-field" />
+        <input type="password" id="senha" name="senha" placeholder="Senha" required class="input-field" />
+        <input type="password" id="confirmarSenha" name="confirmarSenha" placeholder="Confirmar senha" required class="input-field" />
 
         <button type="submit" class="btn-primary w-full">Cadastrar</button>
       </form>
 
       <p class="text-sm text-center text-gray-500 mt-4">
         Já tem conta?
-        <a href="login.html" class="text-green-500 hover:underline"
-          >Faça login</a
-        >
+        <a href="login.html" class="text-green-500 hover:underline">Faça login</a>
       </p>
     </div>
+
+    <script src="js/cadastroMedico.js" defer></script>
   </body>
 </html>

@@ -28,7 +28,7 @@ function switchUserType(type) {
   medicoBtn.classList.toggle("text-gray-700", isPaciente);
 }
 
-// Lida com envio do formulário
+// Envio do formulário
 loginForm?.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -37,16 +37,34 @@ loginForm?.addEventListener("submit", async (e) => {
   const crm = document.getElementById("crm")?.value;
 
   if (currentUserType === "paciente" && email && password) {
-    // TODO: Fazer requisição real para login do paciente
-    // const result = await loginPaciente(email, password);
-    // localStorage.setItem("token", result.token);
-    window.location.href = "areaPaciente.html";
+    await fazerLogin("/auth/paciente/login", { email, senha: password }, "areaPaciente.html");
   } else if (currentUserType === "medico" && crm && password) {
-    // TODO: Fazer requisição real para login do médico
-    // const result = await loginMedico(crm, password);
-    // localStorage.setItem("token", result.token);
-    window.location.href = "areaMedico.html";
+    await fazerLogin("/auth/medico/login", { crm, senha: password }, "areaMedico.html");
   } else {
     alert("Preencha todos os campos corretamente.");
   }
 });
+
+async function fazerLogin(endpoint, payload, redirectPage) {
+  try {
+    const response = await fetch(`http://localhost:8080${endpoint}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      const erro = await response.text();
+      throw new Error(erro || "Falha no login.");
+    }
+
+    const result = await response.json();
+    localStorage.setItem("token", result.token);
+    window.location.href = redirectPage;
+  } catch (error) {
+    console.error("Erro no login:", error);
+    alert("Falha ao fazer login. Verifique suas credenciais.");
+  }
+}
