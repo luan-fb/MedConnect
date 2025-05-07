@@ -7,6 +7,6 @@ RUN mvn clean package -DskipTests
 # Etapa de execução
 FROM openjdk:17-jdk-slim
 WORKDIR /app
-COPY --from=build /app/target/medconnecct-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/target/medconecct-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
