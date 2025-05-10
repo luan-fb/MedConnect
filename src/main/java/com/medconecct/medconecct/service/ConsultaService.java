@@ -68,8 +68,9 @@ public class ConsultaService {
         dto.setId(consulta.getId());
         dto.setMedico(consulta.getMedico().getNome());
         dto.setPaciente(consulta.getPaciente().getNome());
-        dto.setDataHora(consulta.getDataHora());ot
+        dto.setDataHora(consulta.getDataHora());
         dto.setStatus(consulta.getStatus().name());
+
         return dto;
     }
 
