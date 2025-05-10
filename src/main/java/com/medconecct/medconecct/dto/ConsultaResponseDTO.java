@@ -8,6 +8,7 @@ public class ConsultaResponseDTO {
     private String medico;
     private String paciente;
     private LocalDateTime dataHora;
+    private String status;
 
     public Long getId() {
         return id;
@@ -39,6 +40,14 @@ public class ConsultaResponseDTO {
 
     public void setDataHora(LocalDateTime dataHora) {
         this.dataHora = dataHora;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 }

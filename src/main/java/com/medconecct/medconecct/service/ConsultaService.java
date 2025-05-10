@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.medconecct.medconecct.dto.ConsultaDTO;
 import com.medconecct.medconecct.dto.ConsultaResponseDTO;
 import com.medconecct.medconecct.model.Consulta;
+import com.medconecct.medconecct.model.Consulta.StatusConsulta;
 import com.medconecct.medconecct.model.Medico;
 import com.medconecct.medconecct.model.Paciente;
 import com.medconecct.medconecct.repository.ConsultaRepository;
@@ -67,7 +68,34 @@ public class ConsultaService {
         dto.setId(consulta.getId());
         dto.setMedico(consulta.getMedico().getNome());
         dto.setPaciente(consulta.getPaciente().getNome());
-        dto.setDataHora(consulta.getDataHora());
+        dto.setDataHora(consulta.getDataHora());ot
+        dto.setStatus(consulta.getStatus().name());
         return dto;
     }
+
+    public ConsultaResponseDTO buscarPorId(Long id) {
+        Consulta consulta = consultaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Consulta não encontrada"));
+
+        return mapToDTO(consulta);
+    }
+
+    @Transactional
+    public void marcarComoRealizada(Long id) {
+        Consulta consulta = consultaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Consulta não encontrada"));
+
+        consulta.setStatus(StatusConsulta.AGENDADA);
+        consultaRepository.save(consulta);
+    }
+
+    @Transactional
+    public void cancelarConsulta(Long id) {
+        Consulta consulta = consultaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Consulta não encontrada"));
+
+        consulta.setStatus(StatusConsulta.CANCELADA);
+        consultaRepository.save(consulta);
+    }
+
 }
