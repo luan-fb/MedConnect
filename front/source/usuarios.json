@@ -1,0 +1,12 @@
+[
+  {
+    "tipo": "paciente",
+    "email": "teste@paciente.com",
+    "senha": "paciente123"
+  },
+  {
+    "tipo": "medico",
+    "crm": "123456",
+    "senha": "medico123"
+  }
+]

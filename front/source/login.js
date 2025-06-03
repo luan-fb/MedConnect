@@ -36,35 +36,31 @@ loginForm?.addEventListener("submit", async (e) => {
   const email = document.getElementById("email")?.value;
   const crm = document.getElementById("crm")?.value;
 
-  if (currentUserType === "paciente" && email && password) {
-    await fazerLogin("/auth/paciente/login", { email, senha: password }, "areaPaciente.html");
-  } else if (currentUserType === "medico" && crm && password) {
-    await fazerLogin("/auth/medico/login", { crm, senha: password }, "areaMedico.html");
-  } else {
-    alert("Preencha todos os campos corretamente.");
-  }
-});
-
-async function fazerLogin(endpoint, payload, redirectPage) {
   try {
-    const response = await fetch(`http://localhost:8080${endpoint}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
+    const response = await fetch("source/usuarios.json");
+    const usuarios = await response.json();
 
-    if (!response.ok) {
-      const erro = await response.text();
-      throw new Error(erro || "Falha no login.");
+    let usuarioValido = null;
+
+    if (currentUserType === "paciente") {
+      usuarioValido = usuarios.find(
+        (u) => u.tipo === "paciente" && u.email === email && u.senha === password
+      );
+    } else {
+      usuarioValido = usuarios.find(
+        (u) => u.tipo === "medico" && u.crm === crm && u.senha === password
+      );
     }
 
-    const result = await response.json();
-    localStorage.setItem("token", result.token);
-    window.location.href = redirectPage;
+    if (usuarioValido) {
+      alert("Login realizado com sucesso!");
+      const destino = currentUserType === "paciente" ? "areaPaciente.html" : "areaMedico.html";
+      window.location.href = destino;
+    } else {
+      alert("Credenciais inválidas.");
+    }
   } catch (error) {
-    console.error("Erro no login:", error);
-    alert("Falha ao fazer login. Verifique suas credenciais.");
+    console.error("Erro ao carregar usuários:", error);
+    alert("Erro ao validar login. Verifique o console.");
   }
-}
+});

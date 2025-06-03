@@ -1,239 +1,239 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Área do Médico - MedConnect</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
+  <!DOCTYPE html>
+  <html lang="pt-BR">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Área do Médico - MedConnect</title>
+      <script src="https://cdn.tailwindcss.com"></script>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      />
+      <link rel="stylesheet" href="style.css" />
+    </head>
 
-  <body class="min-h-screen bg-gray-50">
-    <!-- Sidebar -->
-    <div class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg">
-      <div
-        class="flex items-center justify-center h-16 px-4 bg-gradient-to-r from-blue-500 to-green-500"
-      >
-        <i class="fas fa-heartbeat text-white text-2xl mr-2"></i>
-        <span class="text-xl font-semibold text-white">MedConnect</span>
-      </div>
+    <body class="min-h-screen bg-gray-50">
+      <!-- Sidebar -->
+      <div class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg">
+        <div
+          class="flex items-center justify-center h-16 px-4 bg-gradient-to-r from-blue-500 to-green-500"
+        >
+          <i class="fas fa-heartbeat text-white text-2xl mr-2"></i>
+          <span class="text-xl font-semibold text-white">MedConnect</span>
+        </div>
 
-      <nav class="mt-6 px-4 space-y-1">
-        <a
-          href="#"
-          class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-700 rounded-lg bg-blue-50"
-        >
-          <i class="fas fa-home text-blue-500 mr-3"></i> Dashboard
-        </a>
-        <a
-          href="#"
-          class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-700 rounded-lg hover:bg-blue-50"
-        >
-          <i class="fas fa-calendar-alt text-green-500 mr-3"></i> Agendamentos
-        </a>
-        <a
-          href="#"
-          class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-700 rounded-lg hover:bg-blue-50"
-        >
-          <i class="fas fa-user-md text-blue-400 mr-3"></i> Pacientes
-        </a>
-        <a
-          href="#"
-          class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-700 rounded-lg hover:bg-blue-50"
-        >
-          <i class="fas fa-pills text-green-400 mr-3"></i> Medicamentos
-        </a>
-        <a
-          href="#"
-          class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-700 rounded-lg hover:bg-blue-50"
-        >
-          <i class="fas fa-file-medical text-blue-300 mr-3"></i> Prontuários
-        </a>
-        <a
-          href="#"
-          class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-700 rounded-lg hover:bg-blue-50"
-        >
-          <i class="fas fa-chart-line text-green-300 mr-3"></i> Relatórios
-        </a>
-
-        <div class="pt-4 mt-4 border-t border-gray-200">
+        <nav class="mt-6 px-4 space-y-1">
+          <a
+            href="#"
+            class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-700 rounded-lg bg-blue-50"
+          >
+            <i class="fas fa-home text-blue-500 mr-3"></i> Dashboard
+          </a>
           <a
             href="#"
             class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-700 rounded-lg hover:bg-blue-50"
           >
-            <i class="fas fa-cog text-gray-500 mr-3"></i> Configurações
+            <i class="fas fa-calendar-alt text-green-500 mr-3"></i> Agendamentos
           </a>
           <a
-            href="login.html"
+            href="#"
             class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-700 rounded-lg hover:bg-blue-50"
           >
-            <i class="fas fa-sign-out-alt text-gray-500 mr-3"></i> Sair
+            <i class="fas fa-user-md text-blue-400 mr-3"></i> Pacientes
           </a>
-        </div>
-      </nav>
-    </div>
-
-    <!-- Main Content -->
-    <div class="ml-64 flex flex-col min-h-screen">
-      <!-- Header -->
-      <header class="bg-white shadow-sm">
-        <div class="flex justify-between items-center px-6 py-4">
-          <h2 class="text-xl font-semibold text-gray-800">Dashboard</h2>
-          <div class="flex items-center space-x-4">
-            <button
-              class="p-2 rounded-full text-gray-500 hover:text-gray-700 hover:bg-gray-100"
-            >
-              <i class="fas fa-bell"></i>
-            </button>
-            <div class="relative">
-              <button class="flex items-center space-x-2 focus:outline-none">
-                <div
-                  class="h-8 w-8 rounded-full bg-gradient-to-r from-blue-400 to-green-400 flex items-center justify-center text-white font-semibold"
-                >
-                  JD
-                </div>
-                <span class="text-sm font-medium text-gray-700"
-                  >Dr. João Silva</span
-                >
-                <i class="fas fa-chevron-down text-gray-500 text-xs"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <!-- Content -->
-      <main class="flex-1 p-6">
-        <!-- Painéis Resumo -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-          <!-- Consultas Hoje -->
-          <div
-            class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-blue-400"
+          <a
+            href="#"
+            class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-700 rounded-lg hover:bg-blue-50"
           >
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="text-sm font-medium text-gray-500">Consultas Hoje</p>
-                <p class="text-2xl font-semibold text-gray-800 mt-1">12</p>
-              </div>
-              <div class="p-3 rounded-full bg-blue-50 text-blue-500">
-                <i class="fas fa-calendar-check"></i>
-              </div>
-            </div>
-            <div class="mt-4">
-              <span class="text-xs font-medium text-green-500"
-                >+2 em relação a ontem</span
-              >
-            </div>
-          </div>
-
-          <!-- Pacientes Ativos -->
-          <div
-            class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-green-400"
+            <i class="fas fa-pills text-green-400 mr-3"></i> Medicamentos
+          </a>
+          <a
+            href="#"
+            class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-700 rounded-lg hover:bg-blue-50"
           >
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="text-sm font-medium text-gray-500">
-                  Pacientes Ativos
-                </p>
-                <p class="text-2xl font-semibold text-gray-800 mt-1">84</p>
-              </div>
-              <div class="p-3 rounded-full bg-green-50 text-green-500">
-                <i class="fas fa-user-injured"></i>
-              </div>
-            </div>
-            <div class="mt-4">
-              <span class="text-xs font-medium text-green-500"
-                >+5 este mês</span
-              >
-            </div>
-          </div>
-
-          <!-- Exames Pendentes -->
-          <div
-            class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-blue-300"
+            <i class="fas fa-file-medical text-blue-300 mr-3"></i> Prontuários
+          </a>
+          <a
+            href="#"
+            class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-700 rounded-lg hover:bg-blue-50"
           >
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="text-sm font-medium text-gray-500">
-                  Exames Pendentes
-                </p>
-                <p class="text-2xl font-semibold text-gray-800 mt-1">7</p>
-              </div>
-              <div class="p-3 rounded-full bg-blue-50 text-blue-400">
-                <i class="fas fa-vial"></i>
-              </div>
-            </div>
-            <div class="mt-4">
-              <span class="text-xs font-medium text-red-500">2 atrasados</span>
-            </div>
-          </div>
+            <i class="fas fa-chart-line text-green-300 mr-3"></i> Relatórios
+          </a>
 
-          <!-- Mensagens -->
-          <div
-            class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-green-300"
-          >
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="text-sm font-medium text-gray-500">Mensagens</p>
-                <p class="text-2xl font-semibold text-gray-800 mt-1">5</p>
-              </div>
-              <div class="p-3 rounded-full bg-green-50 text-green-400">
-                <i class="fas fa-envelope"></i>
-              </div>
-            </div>
-            <div class="mt-4">
-              <span class="text-xs font-medium text-blue-500">2 não lidas</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Consultas Futuras -->
-        <div class="bg-white rounded-xl shadow-sm overflow-hidden">
-          <div class="px-6 py-4 border-b border-gray-200">
-            <h3 class="text-lg font-semibold text-gray-800">
-              Próximas Consultas
-            </h3>
-          </div>
-          <div class="divide-y divide-gray-200" id="lista-consultas">
-            <!-- Conteúdo preenchido via JS -->
-          </div>
-          <div class="px-6 py-3 bg-gray-50 text-center">
+          <div class="pt-4 mt-4 border-t border-gray-200">
             <a
               href="#"
-              class="text-sm font-medium text-blue-500 hover:text-blue-600"
+              class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-700 rounded-lg hover:bg-blue-50"
             >
-              Ver todas as consultas
+              <i class="fas fa-cog text-gray-500 mr-3"></i> Configurações
+            </a>
+            <a
+              href="login.html"
+              class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-700 rounded-lg hover:bg-blue-50"
+            >
+              <i class="fas fa-sign-out-alt text-gray-500 mr-3"></i> Sair
             </a>
           </div>
-        </div>
-      </main>
+        </nav>
+      </div>
 
-      <!-- Footer -->
-      <footer class="bg-white border-t border-gray-200 py-4 px-6">
-        <div class="flex items-center justify-between">
-          <p class="text-sm text-gray-500">
-            © 2025 MedConnect. Todos os direitos reservados.
-          </p>
-          <div class="flex space-x-4">
-            <a href="#" class="text-sm text-gray-500 hover:text-gray-700"
-              >Termos</a
-            >
-            <a href="#" class="text-sm text-gray-500 hover:text-gray-700"
-              >Privacidade</a
-            >
-            <a href="#" class="text-sm text-gray-500 hover:text-gray-700"
-              >Contato</a
-            >
+      <!-- Main Content -->
+      <div class="ml-64 flex flex-col min-h-screen">
+        <!-- Header -->
+        <header class="bg-white shadow-sm">
+          <div class="flex justify-between items-center px-6 py-4">
+            <h2 class="text-xl font-semibold text-gray-800">Dashboard</h2>
+            <div class="flex items-center space-x-4">
+              <button
+                class="p-2 rounded-full text-gray-500 hover:text-gray-700 hover:bg-gray-100"
+              >
+                <i class="fas fa-bell"></i>
+              </button>
+              <div class="relative">
+                <button class="flex items-center space-x-2 focus:outline-none">
+                  <div
+                    class="h-8 w-8 rounded-full bg-gradient-to-r from-blue-400 to-green-400 flex items-center justify-center text-white font-semibold"
+                  >
+                    JD
+                  </div>
+                  <span class="text-sm font-medium text-gray-700"
+                    >Dr. João Silva</span
+                  >
+                  <i class="fas fa-chevron-down text-gray-500 text-xs"></i>
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-      </footer>
-    </div>
+        </header>
 
-    <!-- Script da tela -->
-    <script src="source/areaMedico.js" defer></script>
-  </body>
-</html>
+        <!-- Content -->
+        <main class="flex-1 p-6">
+          <!-- Painéis Resumo -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+            <!-- Consultas Hoje -->
+            <div
+              class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-blue-400"
+            >
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-sm font-medium text-gray-500">Consultas Hoje</p>
+                  <p class="text-2xl font-semibold text-gray-800 mt-1">12</p>
+                </div>
+                <div class="p-3 rounded-full bg-blue-50 text-blue-500">
+                  <i class="fas fa-calendar-check"></i>
+                </div>
+              </div>
+              <div class="mt-4">
+                <span class="text-xs font-medium text-green-500"
+                  >+2 em relação a ontem</span
+                >
+              </div>
+            </div>
+
+            <!-- Pacientes Ativos -->
+            <div
+              class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-green-400"
+            >
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-sm font-medium text-gray-500">
+                    Pacientes Ativos
+                  </p>
+                  <p class="text-2xl font-semibold text-gray-800 mt-1">84</p>
+                </div>
+                <div class="p-3 rounded-full bg-green-50 text-green-500">
+                  <i class="fas fa-user-injured"></i>
+                </div>
+              </div>
+              <div class="mt-4">
+                <span class="text-xs font-medium text-green-500"
+                  >+5 este mês</span
+                >
+              </div>
+            </div>
+
+            <!-- Exames Pendentes -->
+            <div
+              class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-blue-300"
+            >
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-sm font-medium text-gray-500">
+                    Exames Pendentes
+                  </p>
+                  <p class="text-2xl font-semibold text-gray-800 mt-1">7</p>
+                </div>
+                <div class="p-3 rounded-full bg-blue-50 text-blue-400">
+                  <i class="fas fa-vial"></i>
+                </div>
+              </div>
+              <div class="mt-4">
+                <span class="text-xs font-medium text-red-500">2 atrasados</span>
+              </div>
+            </div>
+
+            <!-- Mensagens -->
+            <div
+              class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-green-300"
+            >
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-sm font-medium text-gray-500">Mensagens</p>
+                  <p class="text-2xl font-semibold text-gray-800 mt-1">5</p>
+                </div>
+                <div class="p-3 rounded-full bg-green-50 text-green-400">
+                  <i class="fas fa-envelope"></i>
+                </div>
+              </div>
+              <div class="mt-4">
+                <span class="text-xs font-medium text-blue-500">2 não lidas</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Consultas Futuras -->
+          <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+            <div class="px-6 py-4 border-b border-gray-200">
+              <h3 class="text-lg font-semibold text-gray-800">
+                Próximas Consultas
+              </h3>
+            </div>
+            <div class="divide-y divide-gray-200" id="lista-consultas">
+              <!-- Conteúdo preenchido via JS -->
+            </div>
+            <div class="px-6 py-3 bg-gray-50 text-center">
+              <a
+                href="#"
+                class="text-sm font-medium text-blue-500 hover:text-blue-600"
+              >
+                Ver todas as consultas
+              </a>
+            </div>
+          </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t border-gray-200 py-4 px-6">
+          <div class="flex items-center justify-between">
+            <p class="text-sm text-gray-500">
+              © 2025 MedConnect. Todos os direitos reservados.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-sm text-gray-500 hover:text-gray-700"
+                >Termos</a
+              >
+              <a href="#" class="text-sm text-gray-500 hover:text-gray-700"
+                >Privacidade</a
+              >
+              <a href="#" class="text-sm text-gray-500 hover:text-gray-700"
+                >Contato</a
+              >
+            </div>
+          </div>
+        </footer>
+      </div>
+
+      <!-- Script da tela -->
+      <script src="source/areaMedico.js" defer></script>
+    </body>
+  </html>
