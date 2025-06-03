@@ -12,29 +12,44 @@
       <h2 class="text-2xl font-bold mb-6 text-center text-blue-500">
         Cadastro de Paciente
       </h2>
-      <form class="space-y-4">
+      <form class="space-y-4" novalidate>
         <input
           type="text"
+          name="nome"
           placeholder="Nome completo"
           required
           class="input-field"
         />
-        <input type="email" placeholder="E-mail" required class="input-field" />
-        <input type="text" placeholder="CPF" required class="input-field" />
+        <input
+          type="email"
+          name="email"
+          placeholder="E-mail"
+          required
+          class="input-field"
+        />
+        <input
+          type="text"
+          name="cpf"
+          placeholder="CPF"
+          required
+          class="input-field"
+        />
         <input
           type="date"
-          placeholder="Data de nascimento"
+          name="nascimento"
           required
           class="input-field"
         />
         <input
           type="password"
+          name="senha"
           placeholder="Senha"
           required
           class="input-field"
         />
         <input
           type="password"
+          name="confirmarSenha"
           placeholder="Confirmar senha"
           required
           class="input-field"
@@ -45,10 +60,11 @@
 
       <p class="text-sm text-center text-gray-500 mt-4">
         Já tem conta?
-        <a href="login.html" class="text-blue-500 hover:underline"
-          >Faça login</a
-        >
+        <a href="login.html" class="text-blue-500 hover:underline">
+          Faça login
+        </a>
       </p>
     </div>
+    <script src="source/cadastroPaciente.js"></script>
   </body>
 </html>
