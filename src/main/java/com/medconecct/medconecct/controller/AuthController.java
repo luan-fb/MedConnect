@@ -39,13 +39,13 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         String email = loginRequest.getEmail();
-        String senha = loginRequest.getSenha();
+        String senha = loginRequest.getPassword();
 
         Optional<Usuario> usuarioOpt = usuarioRepository.findByEmail(email);
 
         if (usuarioOpt.isPresent()) {
             Usuario usuario = usuarioOpt.get();
-            if (passwordEncoder.matches(senha, usuario.getSenha())) {
+            if (passwordEncoder.matches(senha, usuario.getPassword())) {
                 String token = jwtUtil.generateToken(usuario.getEmail(), usuario.getRole());
                 return ResponseEntity.ok().body(Collections.singletonMap("token", token));
             }
@@ -60,7 +60,7 @@ public class AuthController {
             return ResponseEntity.badRequest().body("Erro: E-mail já cadastrado!");
         }
 
-        if (dto.getSenha() == null || dto.getSenha().isEmpty()) {
+        if (dto.getPassword() == null || dto.getPassword().isEmpty()) {
             return ResponseEntity.badRequest().body("Erro: A senha é obrigatória!");
         }
 
@@ -85,10 +85,10 @@ public class AuthController {
 
         usuario.setNome(dto.getNome());
         usuario.setEmail(dto.getEmail());
-        usuario.setSenha(passwordEncoder.encode(dto.getSenha()));
+        usuario.setPassword(passwordEncoder.encode(dto.getPassword()));
 
         Usuario novoUsuario = usuarioRepository.save(usuario);
-        novoUsuario.setSenha(null);
+        novoUsuario.setPassword(null);
 
         return ResponseEntity.ok(UsuarioResponseDTO.from(novoUsuario));
     }

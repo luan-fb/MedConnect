@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "pacientes")
 public class Paciente extends Usuario {
-    @Column(nullable = false, unique = true, length = 11)
+    @Column(nullable = false, unique = true, length = 20)
     private String cpf;
 
     private String endereco;

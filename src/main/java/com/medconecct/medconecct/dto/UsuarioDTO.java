@@ -14,7 +14,7 @@ public class UsuarioDTO {
 
     @NotBlank(message = "A senha é obrigatória")
     @Size(min = 6, message = "A senha deve ter pelo menos 6 caracteres")
-    private String senha;
+    private String password;
 
     @NotBlank(message = "O tipo de usuário é obrigatório")
     private String tipo;
@@ -34,10 +34,6 @@ public class UsuarioDTO {
 
     public String getEmail() {
         return email;
-    }
-
-    public String getSenha() {
-        return senha;
     }
 
     public String getTipo() {
@@ -64,16 +60,16 @@ public class UsuarioDTO {
         return especialidade;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
     public void setTipo(String tipo) {
@@ -98,6 +94,10 @@ public class UsuarioDTO {
 
     public void setEspecialidade(String especialidade) {
         this.especialidade = especialidade;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 }

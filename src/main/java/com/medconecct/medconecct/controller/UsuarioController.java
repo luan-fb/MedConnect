@@ -33,7 +33,7 @@ public class UsuarioController {
     @GetMapping
     public ResponseEntity<List<Usuario>> listarTodos() {
         List<Usuario> usuarios = usuarioRepository.findAll();
-        usuarios.forEach(usuario -> usuario.setSenha(null)); // Remove a senha antes de enviar a resposta
+        usuarios.forEach(usuario -> usuario.setPassword(null)); // Remove a senha antes de enviar a resposta
         return ResponseEntity.ok(usuarios);
     }
 
@@ -42,7 +42,7 @@ public class UsuarioController {
     public ResponseEntity<Usuario> buscarPorId(@PathVariable Long id) {
         return usuarioRepository.findById(id)
                 .map(usuario -> {
-                    usuario.setSenha(null);
+                    usuario.setPassword(null);
                     return ResponseEntity.ok(usuario);
                 })
                 .orElse(ResponseEntity.notFound().build());
@@ -56,12 +56,12 @@ public class UsuarioController {
             usuario.setEmail(usuarioAtualizado.getEmail());
 
             // Se a senha foi alterada, criptografa novamente
-            if (usuarioAtualizado.getSenha() != null && !usuarioAtualizado.getSenha().isEmpty()) {
-                usuario.setSenha(passwordEncoder.encode(usuarioAtualizado.getSenha()));
+            if (usuarioAtualizado.getPassword() != null && !usuarioAtualizado.getPassword().isEmpty()) {
+                usuario.setPassword(passwordEncoder.encode(usuarioAtualizado.getPassword()));
             }
 
             Usuario atualizado = usuarioRepository.save(usuario);
-            atualizado.setSenha(null); // Remove a senha antes de enviar a resposta
+            atualizado.setPassword(null); // Remove a senha antes de enviar a resposta
             return ResponseEntity.ok(atualizado);
         }).orElse(ResponseEntity.notFound().build());
     }

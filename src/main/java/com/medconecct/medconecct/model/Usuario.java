@@ -33,14 +33,15 @@ public abstract class Usuario implements UserDetails {
     private String email;
 
     @Column(nullable = false)
-    private String senha;
+    private String password;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TipoUsuario tipo;
 
-    public String getSenha() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    @Override
+    public String getPassword() {
+        return password;
     }
 
     public Long getId() {
@@ -71,8 +72,8 @@ public abstract class Usuario implements UserDetails {
         this.email = email;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setTipo(TipoUsuario tipo) {
@@ -88,11 +89,6 @@ public abstract class Usuario implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(() -> "ROLE_" + tipo.name()); // Exemplo: "ROLE_PACIENTE" ou "ROLE_MEDICO"
-    }
-
-    @Override
-    public String getPassword() {
-        return senha;
     }
 
     @Override
