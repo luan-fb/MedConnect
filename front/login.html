@@ -1,109 +1,82 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - MedConnect</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body class="min-h-screen gradient-bg flex items-center justify-center">
-    <div class="w-full max-w-md bg-white rounded-xl card-shadow overflow-hidden">
-      <!-- Cabeçalho -->
-      <div class="bg-gradient-to-r from-blue-400 to-green-400 p-6 text-center">
-        <div class="flex items-center justify-center mb-4">
-          <i class="fas fa-heartbeat text-white text-4xl mr-3"></i>
-          <h1 class="text-3xl font-bold text-white">MedConnect</h1>
-        </div>
-        <p class="text-white opacity-90">Conectando profissionais de saúde</p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - MedConnect</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="min-h-screen gradient-bg flex items-center justify-center">
+  <div class="w-full max-w-md bg-white rounded-xl card-shadow overflow-hidden">
+    <!-- Cabeçalho -->
+    <div class="bg-gradient-to-r from-blue-400 to-green-400 p-6 text-center">
+      <div class="flex items-center justify-center mb-4">
+        <i class="fas fa-heartbeat text-white text-4xl mr-3"></i>
+        <h1 class="text-3xl font-bold text-white">MedConnect</h1>
       </div>
-
-      <!-- Alternância de perfil -->
-      <div class="p-4 flex justify-center gap-4">
-        <button
-          id="pacienteBtn"
-          data-user-type="paciente"
-          class="px-4 py-2 text-sm font-semibold rounded-md bg-blue-500 text-white hover:bg-blue-600"
-        >
-          Paciente
-        </button>
-        <button
-          id="medicoBtn"
-          data-user-type="medico"
-          class="px-4 py-2 text-sm font-semibold rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300"
-        >
-          Médico
-        </button>
-      </div>
-
-      <!-- Formulário -->
-      <div class="p-6 pt-0">
-        <form id="login-form" class="space-y-6">
-          <!-- Campo E-mail -->
-          <div id="emailField" class="">
-            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition duration-200"
-              placeholder="seu@email.com"
-            />
-          </div>
-
-          <!-- Campo CRM -->
-          <div id="crmField" class="hidden">
-            <label for="crm" class="block text-sm font-medium text-gray-700 mb-1">CRM</label>
-            <input
-              type="text"
-              id="crm"
-              name="crm"
-              required
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition duration-200"
-              placeholder="123456"
-            />
-          </div>
-
-          <!-- Senha -->
-          <div>
-            <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Senha</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              required
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition duration-200"
-              placeholder="••••••••"
-            />
-          </div>
-
-          <!-- Botão de envio -->
-          <button
-            type="submit"
-            class="w-full py-3 px-4 rounded-lg text-white bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-600 hover:to-green-600 font-medium transition pulse-animation"
-          >
-            Entrar
-          </button>
-        </form>
-
-        <!-- Link de cadastro -->
-        <div class="text-center text-sm text-gray-500 mt-6">
-          Não tem uma conta?
-          <a
-            href="cadastroPaciente.html"
-            class="text-blue-500 hover:text-blue-600 font-medium"
-            >Cadastre-se</a
-          >
-        </div>
-      </div>
+      <p class="text-white opacity-90">Conectando profissionais de saúde</p>
     </div>
 
-    <script src="source/login.js" defer></script>
-  </body>
+    <!-- Alternância de perfil -->
+    <div class="p-4 flex justify-center gap-4">
+      <button id="pacienteBtn" data-user-type="paciente"
+        class="px-4 py-2 text-sm font-semibold rounded-md bg-blue-500 text-white hover:bg-blue-600">
+        Paciente
+      </button>
+      <button id="medicoBtn" data-user-type="medico"
+        class="px-4 py-2 text-sm font-semibold rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300">
+        Médico
+      </button>
+    </div>
+
+    <!-- Formulário -->
+    <div class="p-6 pt-0">
+      <form id="login-form" class="space-y-6">
+        <input type="hidden" id="userType" name="userType" value="paciente">
+        <!-- Campo E-mail -->
+        <div id="emailField" class="">
+          <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
+          <input type="email" id="email" name="email" required
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition duration-200"
+            placeholder="seu@email.com" />
+        </div>
+
+        <!-- Campo CRM -->
+        <div id="crmField" class="hidden">
+          <label for="crm" class="block text-sm font-medium text-gray-700 mb-1">CRM</label>
+          <input type="text" id="crm" name="crm" required
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition duration-200"
+            placeholder="123456" />
+        </div>
+
+        <!-- Senha -->
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Senha</label>
+          <input type="password" id="password" name="password" required
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition duration-200"
+            placeholder="••••••••" />
+        </div>
+
+        <!-- Botão de envio -->
+        <button type="submit"
+          class="w-full py-3 px-4 rounded-lg text-white bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-600 hover:to-green-600 font-medium transition pulse-animation">
+          Entrar
+        </button>
+      </form>
+
+      <!-- Link de cadastro -->
+      <div class="text-center text-sm text-gray-500 mt-6">
+        Não tem uma conta?
+        <a href="cadastroPaciente.html" class="text-blue-500 hover:text-blue-600 font-medium">Cadastre-se</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="source/login.js" defer></script>
+</body>
+
 </html>
