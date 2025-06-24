@@ -12,6 +12,7 @@ C:\Users\cfask\Desktop\Desenvolvimento pessoal\MedConnect\MedConnect\src\main\ja
 C:\Users\cfask\Desktop\Desenvolvimento pessoal\MedConnect\MedConnect\src\main\java\com\medconecct\medconecct\dto\LoginRequest.java
 C:\Users\cfask\Desktop\Desenvolvimento pessoal\MedConnect\MedConnect\src\main\java\com\medconecct\medconecct\dto\UsuarioDTO.java
 C:\Users\cfask\Desktop\Desenvolvimento pessoal\MedConnect\MedConnect\src\main\java\com\medconecct\medconecct\dto\UsuarioResponseDTO.java
+C:\Users\cfask\Desktop\Desenvolvimento pessoal\MedConnect\MedConnect\src\main\java\com\medconecct\medconecct\exception\ConflitoHorarioException.java
 C:\Users\cfask\Desktop\Desenvolvimento pessoal\MedConnect\MedConnect\src\main\java\com\medconecct\medconecct\exception\ValidationExceptionHandler.java
 C:\Users\cfask\Desktop\Desenvolvimento pessoal\MedConnect\MedConnect\src\main\java\com\medconecct\medconecct\MedconecctApplication.java
 C:\Users\cfask\Desktop\Desenvolvimento pessoal\MedConnect\MedConnect\src\main\java\com\medconecct\medconecct\model\Consulta.java

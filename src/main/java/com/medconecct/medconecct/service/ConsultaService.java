@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.medconecct.medconecct.dto.ConsultaDTO;
 import com.medconecct.medconecct.dto.ConsultaResponseDTO;
+import com.medconecct.medconecct.exception.ConflitoHorarioException;
 import com.medconecct.medconecct.model.Consulta;
 import com.medconecct.medconecct.model.Consulta.StatusConsulta;
 import com.medconecct.medconecct.model.Medico;
@@ -38,20 +39,23 @@ public class ConsultaService {
         Paciente paciente = pacienteRepository.findById(dto.getPacienteId())
                 .orElseThrow(() -> new RuntimeException("Paciente não encontrado"));
 
+        // --- NOVA VALIDAÇÃO ---
+        // Verifica se já existe uma consulta para o mesmo médico no mesmo horário
+        if (consultaRepository.existsByMedicoIdAndDataHora(medico.getId(), dto.getDataHora())) {
+            throw new ConflitoHorarioException("O médico já possui uma consulta agendada para este horário.");
+        }
+        // --- FIM DA VALIDAÇÃO ---
+
         Consulta consulta = new Consulta();
         consulta.setMedico(medico);
         consulta.setPaciente(paciente);
         consulta.setDataHora(dto.getDataHora());
+        consulta.setStatus(StatusConsulta.AGENDADA); // Define o status inicial
 
         Consulta salva = consultaRepository.save(consulta);
 
-        ConsultaResponseDTO response = new ConsultaResponseDTO();
-        response.setId(salva.getId());
-        response.setMedico(medico.getNome());
-        response.setPaciente(paciente.getNome());
-        response.setDataHora(salva.getDataHora());
-
-        return response;
+        // Reutilizando o método mapToDTO que já existe e é mais completo
+        return mapToDTO(salva);
     }
 
     public List<ConsultaResponseDTO> listarPorMedico(Long medicoId) {

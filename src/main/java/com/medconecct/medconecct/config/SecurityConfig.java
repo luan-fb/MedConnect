@@ -15,6 +15,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import static org.springframework.security.config.Customizer.withDefaults;
+import org.springframework.http.HttpMethod;
 
 import com.medconecct.medconecct.security.JwtAuthenticationFilter;
 
@@ -36,11 +37,14 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .cors(withDefaults()) // <--- ADICIONE ESTA LINHA AQUI
+                .cors(withDefaults())
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll() // Libera login e cadastro
+                        .requestMatchers(HttpMethod.POST, "/consultas").hasRole("PACIENTE")
+                        .requestMatchers(HttpMethod.GET, "/consultas/paciente/**").hasAnyRole("PACIENTE", "MEDICO")
+                        .requestMatchers(HttpMethod.GET, "/consultas/medico/**").hasRole("MEDICO")
                         .anyRequest().authenticated() // O resto precisa de autenticação
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
