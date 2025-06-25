@@ -1,6 +1,7 @@
 package com.medconecct.medconecct.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -32,7 +33,7 @@ public class Receita {
     private Consulta consulta;
 
     @Column(nullable = false)
-    private LocalDate dataEmissao;
+    private LocalDateTime dataEmissao;
 
     @Column(columnDefinition = "TEXT")
     private String descricao;
@@ -71,11 +72,11 @@ public class Receita {
         this.consulta = consulta;
     }
 
-    public LocalDate getDataEmissao() {
+    public LocalDateTime getDataEmissao() {
         return dataEmissao;
     }
 
-    public void setDataEmissao(LocalDate dataEmissao) {
+    public void setDataEmissao(LocalDateTime dataEmissao) {
         this.dataEmissao = dataEmissao;
     }
 

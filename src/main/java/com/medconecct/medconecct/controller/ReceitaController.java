@@ -1,39 +1,36 @@
 package com.medconecct.medconecct.controller;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import com.medconecct.medconecct.dto.ReceitaDTO;
+import com.medconecct.medconecct.dto.ReceitaResponseDTO;
+import com.medconecct.medconecct.model.Usuario;
+import com.medconecct.medconecct.service.ReceitaService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.medconecct.medconecct.model.Receita;
-import com.medconecct.medconecct.repository.ReceitaRepository;
+import java.net.URI;
 
 @RestController
-@RequestMapping("/api/receitas")
+@RequestMapping("/receitas")
 public class ReceitaController {
 
-    @Autowired
-    private ReceitaRepository receitaRepository;
+    private final ReceitaService receitaService;
 
-    @PostMapping
-    public ResponseEntity<Receita> emitirReceita(@RequestBody Receita receita) {
-        try {
-            Receita novaReceita = receitaRepository.save(receita);
-            return new ResponseEntity<>(novaReceita, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    public ReceitaController(ReceitaService receitaService) {
+        this.receitaService = receitaService;
     }
 
-    @GetMapping("/paciente/{pacienteId}")
-    public ResponseEntity<List<Receita>> listarPorPaciente(@PathVariable Long pacienteId) {
-        return ResponseEntity.ok(receitaRepository.findByPacienteId(pacienteId));
+    @PostMapping
+    public ResponseEntity<ReceitaResponseDTO> criarReceita(
+            @Valid @RequestBody ReceitaDTO receitaDTO,
+            @AuthenticationPrincipal Usuario medicoLogado) {
+
+        ReceitaResponseDTO novaReceita = receitaService.criarReceita(receitaDTO, medicoLogado);
+        URI uri = URI.create("/receitas/" + novaReceita.getId());
+        return ResponseEntity.created(uri).body(novaReceita);
     }
 }

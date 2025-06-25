@@ -1,5 +1,6 @@
 package com.medconecct.medconecct.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,7 +16,10 @@ import com.medconecct.medconecct.model.Paciente;
 import com.medconecct.medconecct.repository.ConsultaRepository;
 import com.medconecct.medconecct.repository.MedicoRepository;
 import com.medconecct.medconecct.repository.PacienteRepository;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import java.time.LocalDateTime;
+import com.medconecct.medconecct.model.Consulta.StatusConsulta;
 import jakarta.transaction.Transactional;
 
 @Service
@@ -58,13 +62,37 @@ public class ConsultaService {
         return mapToDTO(salva);
     }
 
-    public List<ConsultaResponseDTO> listarPorMedico(Long medicoId) {
-        return consultaRepository.findByMedicoId(medicoId).stream().map(this::mapToDTO).collect(Collectors.toList());
+    public Page<ConsultaResponseDTO> listarPorMedico(Long medicoId, LocalDateTime dataInicio, LocalDateTime dataFim,
+            Pageable pageable) {
+        medicoRepository.findById(medicoId)
+                .orElseThrow(() -> new RuntimeException("Médico não encontrado com o ID: " + medicoId));
+
+        Page<Consulta> consultas;
+
+        // Se as datas não forem fornecidas, busca tudo. Se forem, filtra pelo período.
+        if (dataInicio != null && dataFim != null) {
+            consultas = consultaRepository.findByMedicoIdAndDataHoraBetween(medicoId, dataInicio, dataFim, pageable);
+        } else {
+            consultas = consultaRepository.findByMedicoId(medicoId, pageable);
+        }
+
+        return consultas.map(this::mapToDTO); // Mapeia a página de Consulta para uma página de DTO
     }
 
-    public List<ConsultaResponseDTO> listarPorPaciente(Long pacienteId) {
-        return consultaRepository.findByPacienteId(pacienteId).stream().map(this::mapToDTO)
-                .collect(Collectors.toList());
+    public Page<ConsultaResponseDTO> listarPorPaciente(Long pacienteId, Consulta.StatusConsulta status,
+            Pageable pageable) {
+        pacienteRepository.findById(pacienteId)
+                .orElseThrow(() -> new RuntimeException("Paciente não encontrado com o ID: " + pacienteId));
+
+        Page<Consulta> consultas;
+
+        if (status != null) {
+            consultas = consultaRepository.findByPacienteIdAndStatus(pacienteId, status, pageable);
+        } else {
+            consultas = consultaRepository.findByPacienteId(pacienteId, pageable);
+        }
+
+        return consultas.map(this::mapToDTO);
     }
 
     private ConsultaResponseDTO mapToDTO(Consulta consulta) {
